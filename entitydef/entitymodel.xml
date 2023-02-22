@@ -283,7 +283,6 @@ under the License.
         <field name="customerDimId" type="id"/>
         <field name="itemTaxAmount" type="currency-amount"/>
         <field name="storeShipMethDimId" type="id"/>
-        <field name="quantity" type="fixed-point"/>
         <field name="cancelQuantity" type="fixed-point"/>
         <field name="autoCancelDateDimId" type="id"/>
         <field name="dontCancelSetDateDimId" type="id"/>
