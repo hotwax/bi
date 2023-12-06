@@ -27,17 +27,12 @@ under the License.
     <entity-group group="org.apache.ofbiz.olap" entity="CurrencyDimension"/>
     <entity-group group="org.apache.ofbiz.olap" entity="ProductDimension"/>
     <entity-group group="org.apache.ofbiz.olap" entity="CustomerDimension"/>
-    <entity-group group="org.apache.ofbiz.olap" entity="ProductStoreDimension"/>
-    <entity-group group="org.apache.ofbiz.olap" entity="StoreShipMethDimension"/>
-    <entity-group group="org.apache.ofbiz.olap" entity="CategoryDimension"/>
-    <entity-group group="org.apache.ofbiz.olap" entity="FacilityDimension"/>
     <!-- ========================================================= -->
     <!-- Facts                                                -->
     <!-- ========================================================= -->
     <entity-group group="org.apache.ofbiz.olap" entity="SalesOrderFact"/>
     <entity-group group="org.apache.ofbiz.olap" entity="SalesOrderItemFact"/>
     <entity-group group="org.apache.ofbiz.olap" entity="SalesReturnItemFact"/>
-    <entity-group group="org.apache.ofbiz.olap" entity="ShipmentReceiptFact"/>
     <!-- ========================================================= -->
     <!-- Star Schemas                                              -->
     <!-- ========================================================= -->

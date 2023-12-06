@@ -118,23 +118,6 @@ under the License.
         <field name="categoryDimId" type="id"/>
         <field name="upca" type="id-long"/>
         <prim-key field="dimensionId"/>
-        <relation rel-entity-name="CategoryDimension" type="one" fk-name="PD_CD">
-            <key-map field-name="categoryDimId" rel-field-name="dimensionId"/>
-        </relation>
-    </entity>
-
-    <entity entity-name="ProductStoreDimension" package-name="org.apache.ofbiz.bi.dimension.store" title="Store Dimension Entity">
-        <field name="dimensionId" type="id"/>
-        <field name="productStoreId" type="id"/>
-        <field name="externalId" type="id-long"/>
-        <field name="storeName" type="name"/>
-        <field name="payToPartyId" type="id"/>
-        <field name="groupName" type="name"/>
-        <field name="inventoryFacilityDimId" type="id"/>
-        <prim-key field="dimensionId"/>
-        <relation type="one-nofk" rel-entity-name="FacilityDimension" fk-name="PS_FD">
-            <key-map field-name="inventoryFacilityDimId" rel-field-name="dimensionId"/>
-        </relation>
     </entity>
 
     <entity entity-name="CustomerDimension" package-name="org.apache.ofbiz.bi.dimension.customer" title="Customer Dimension Entity">
@@ -146,51 +129,6 @@ under the License.
         <field name="lastName" type="name"/>
         <field name="customerName" type="name"/>
         <field name="companyName" type="name"/>
-        <prim-key field="dimensionId"/>
-    </entity>
-
-    <entity entity-name="StoreShipMethDimension" package-name="org.apache.ofbiz.bi.dimension.shipment" title="Product Store Shipment Method Dimension Entity">
-        <field name="dimensionId" type="id"/>
-        <field name="productStoreShipMethId" type="id"/>
-        <field name="productStoreId" type="id"/>
-        <field name="storeName" type="name"/>
-        <field name="carrierPartyId" type="id"/>
-        <field name="carrierPartyName" type="name"/>
-        <field name="roleTypeId" type="id"/>
-        <field name="roleType" type="name"/>
-        <field name="shipmentMethodTypeId" type="id"/>
-        <field name="shipmentMethodType" type="name"/>
-        <field name="carrierServiceCode" type="name"/>
-        <prim-key field="dimensionId"/>
-    </entity>
-
-    <entity entity-name="CategoryDimension" package-name="org.apache.ofbiz.bi.dimension.category" title="Category Dimension Entity">
-        <field name="dimensionId" type="id"/>
-        <field name="categoryId" type="id"/>
-        <field name="categoryName" type="name"/>
-        <field name="parentCategoryId" type="id"/>
-        <field name="parentCategoryName" type="name"/>
-        <field name="categoryTypeId" type="id"/>
-        <field name="categoryTypeDesc" type="name"/>
-        <prim-key field="dimensionId"/>
-    </entity>
-
-    <entity entity-name="FacilityDimension" package-name="org.apache.ofbiz.bi.dimension.facility">
-        <field name="dimensionId" type="id"/>
-        <field name="facilityId" type="id"/>
-        <field name="externalId" type="id"/>
-        <field name="facilityTypeId" type="id"/>
-        <field name="facilityParentTypeId" type="id"/>
-        <field name="facilityType" type="id"/>
-        <field name="facilityName" type="name"/>
-        <field name="ownerPartyId" type="id"/>
-        <field name="ownerPartyName" type="name"/>
-        <field name="address1" type="long-varchar"/>
-        <field name="address2" type="long-varchar"/>
-        <field name="city" type="name"/>
-        <field name="state" type="name"/>
-        <field name="country" type="name"/>
-        <field name="contactNumber" type="short-varchar"/>
         <prim-key field="dimensionId"/>
     </entity>
 
@@ -227,12 +165,6 @@ under the License.
         <prim-key field="orderId"/>
         <relation type="one" fk-name="SOF_ORDR_DATE" rel-entity-name="DateDimension">
             <key-map field-name="orderDateDimId" rel-field-name="dimensionId"/>
-        </relation>
-        <relation type="one" fk-name="SOF_FACILITY" rel-entity-name="FacilityDimension">
-            <key-map field-name="originFacilityDimId" rel-field-name="dimensionId"/>
-        </relation>
-        <relation rel-entity-name="ProductStoreDimension" type="one" fk-name="SOF_STORE_DIM">
-            <key-map field-name="productStoreDimId" rel-field-name="dimensionId"/>
         </relation>
         <relation rel-entity-name="CustomerDimension" type="one" fk-name="SOF_CUSTOMER">
             <key-map field-name="customerDimId" rel-field-name="dimensionId"/>
@@ -299,16 +231,8 @@ under the License.
         <prim-key field="orderId"/>
         <prim-key field="orderItemSeqId"/>
 
-        <relation rel-entity-name="ProductStoreDimension" type="one" fk-name="SOIF_STORE">
-            <key-map field-name="storeDimId" rel-field-name="dimensionId"/>
-        </relation>
-
         <relation rel-entity-name="CustomerDimension" type="one" fk-name="SOIF_CUSTOMER">
             <key-map field-name="customerDimId" rel-field-name="dimensionId"/>
-        </relation>
-
-        <relation rel-entity-name="StoreShipMethDimension" type="one" fk-name="SOIF_SHIPMETH">
-            <key-map field-name="shipmentDimId" rel-field-name="dimensionId"/>
         </relation>
 
         <relation type="one" fk-name="AUTO_CNCLDATE_SOIF" rel-entity-name="DateDimension" title="autoCancel">
@@ -319,9 +243,6 @@ under the License.
         </relation>
         <relation type="one" fk-name="SOIF_CNCL_BY_USRLOGN" rel-entity-name="UserLogin" title="CancelledBy">
             <key-map field-name="cancelledByUserLogin" rel-field-name="userLoginId"/>
-        </relation>
-        <relation type="one" fk-name="SOIF_SHP_GRP_FAC_ID" rel-entity-name="FacilityDimension" title="shipGroupFacilityId">
-            <key-map field-name="shipGroupFacilityDimId" rel-field-name="dimensionId"/>
         </relation>
         <relation type="one" fk-name="SOIF_ORDERDATE" rel-entity-name="DateDimension">
             <key-map field-name="orderDateDimId" rel-field-name="dimensionId"/>
@@ -375,12 +296,6 @@ under the License.
         <relation type="one" fk-name="SRF_PRODUCT" rel-entity-name="ProductDimension">
             <key-map field-name="returnProductDimId" rel-field-name="dimensionId"/>
         </relation>
-        <relation type="one" fk-name="SRF_STORE" rel-entity-name="ProductStoreDimension">
-            <key-map field-name="productStoreDimId" rel-field-name="dimensionId"/>
-        </relation>
-        <relation type="one" fk-name="SRF_FACILITY" rel-entity-name="FacilityDimension">
-            <key-map field-name="destinationFacilityDimId" rel-field-name="dimensionId"/>
-        </relation>
         <relation type="one" fk-name="SRF_CUSTOMER" rel-entity-name="CustomerDimension">
             <key-map field-name="customerDimId" rel-field-name="dimensionId"/>
         </relation>
@@ -389,47 +304,4 @@ under the License.
         </index>
     </entity>
 
-    <entity entity-name="ShipmentReceiptFact" package-name="org.apache.ofbiz.bi.fact.shiment" title="Shipment Receipt Fact">
-        <field name="shipmentId" type="id"/>
-        <field name="receiptId" type="id"/>
-        <field name="recievedDateDimId" type="id"/>
-        <field name="inventoryItemId" type="id"/>
-        <field name="productDimId" type="id"/>
-        <field name="productStoreDimId" type="id"/>
-        <field name="facilityDimId" type="id"/>
-        <field name="purchaseOrderDateDimId" type="id"/>
-        <field name="purchaseOrderId" type="id"/>
-        <field name="purchaseOrderItemSeqId" type="id"/>
-        <field name="quantityAccepted" type="fixed-point"/>
-        <field name="quantityRejected" type="fixed-point"/>
-        <field name="orderUnitCost" type="currency-amount"/>
-        <field name="orderAmount" type="currency-amount"/>
-        <field name="receiptUnitCost" type="currency-amount"/>
-        <field name="receiptAmount" type="currency-amount"/>
-        <field name="costVariance" type="currency-amount"/>
-        <field name="orderedQuantity" type="fixed-point"/>
-
-        <prim-key field="shipmentId"/>
-        <prim-key field="receiptId"/>
-
-        <relation rel-entity-name="DateDimension" type="one" fk-name="SRPF_DATE" title="Recieved">
-            <key-map field-name="recievedDateDimId" rel-field-name="dimensionId"/>
-        </relation>
-
-        <relation rel-entity-name="ProductDimension" type="one" fk-name="SRPF_PRODUCT">
-            <key-map field-name="productDimId" rel-field-name="dimensionId"/>
-        </relation>
-
-        <relation rel-entity-name="ProductStoreDimension" type="one" fk-name="SRPF_STORE">
-            <key-map field-name="productStoreDimId" rel-field-name="dimensionId"/>
-        </relation>
-
-        <relation rel-entity-name="DateDimension" type="one" fk-name="SRPF_PODATE" title="PurchaseOrder">
-            <key-map field-name="purchaseOrderDateDimId" rel-field-name="dimensionId"/>
-        </relation>
-
-        <relation rel-entity-name="FacilityDimension" type="one" fk-name="SRPF_FACILITY">
-            <key-map field-name="facilityDimId" rel-field-name="dimensionId"/>
-        </relation>
-    </entity>
 </entitymodel>
